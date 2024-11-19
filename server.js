@@ -1,7 +1,18 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors'); // Importamos CORS
 const app = express();
 const port = 3000;
+
+// Configuración de CORS
+const corsOptions = {
+  origin: 'https://bcnsurfschool.es', // Asegúrate de usar tu dominio
+  methods: ['GET'], // Los métodos permitidos (en este caso solo GET)
+  allowedHeaders: ['Content-Type'], // Los encabezados permitidos
+};
+
+// Aplica CORS a todas las rutas
+app.use(cors(corsOptions));
 
 // URL del CSV publicado de tu Google Sheet
 const sheetCsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTKp_muxLpXUvj_wzwu1kVcrnz9gKhNITIIfFRZ_utyY4TMSatQSr2PSca8DzeY-Hm0zVzIwt7wsNSr/pub?output=csv&gid=339105142';
